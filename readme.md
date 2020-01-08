@@ -13,7 +13,7 @@
 
 `npm install --save-dev @commitlint/config-conventional @commitlint/cli husky`
 
-- Configure husky
+- Configure husky by adding the below code to package.json
 
     "husky": {
       "hooks": {
@@ -22,6 +22,7 @@
     }
 
 - Configure commitlint
-  - Create a file called `commitlint.config.js` with the following content:
+
+  Create a file called `commitlint.config.js` with the following content:
 
     module.exports = { extends: [ '@commitlint/config-conventional' ] };
