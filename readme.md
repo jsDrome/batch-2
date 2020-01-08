@@ -22,3 +22,6 @@
     }
 
 - Configure commitlint
+  - Create a file called `commitlint.config.js` with the following content:
+
+    module.exports = { extends: [ '@commitlint/config-conventional' ] };
