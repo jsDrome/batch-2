@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 
 class App extends Component {
   render() {
-    return <h1>Hello, World</h1>;
+    return <h1>All indians</h1>;
   }
 }
 
-render(<App />, document.getElementById('root'));
+render(<App />, document.getElementById('abcde'));

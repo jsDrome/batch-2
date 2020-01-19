@@ -6,6 +6,10 @@
 - Commitlint
 - React entry point
 - Babel
+- Webpack
+  - Webpack dev
+  - Webpack prod
+  - HTML Webpack plugin
 
 ## Commitlint
 
