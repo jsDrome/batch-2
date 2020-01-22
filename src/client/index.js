@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import moment from 'moment';
 
 class App extends Component {
   render() {
