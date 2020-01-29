@@ -6,26 +6,29 @@ class Game extends React.Component {
   };
 
   add = () => {
-    const currentCount = this.state.count;
     this.setState({
-      count: currentCount + 1,
+      count: this.state.count + 1,
     });
   }
 
   subtract = () => {
-    const currentCount = this.state.count;
     this.setState({
-      count: currentCount - 1,
+      count: this.state.count - 1,
     });
-
   }
 
   render() {
-    return <div style={{ border: 'solid 1px black' }}>
-      <p>{this.state.count}</p>
-      <button onClick={this.add}>Add</button>
-      <button onClick={this.subtract}>Subtract</button>
-    </div>;
+    return (
+      <React.Fragment>
+        <React.Fragment>
+          <p>{this.state.count}</p>
+          <button onClick={this.add}>Add</button>
+          <button onClick={this.subtract}>Subtract</button>
+        </React.Fragment>
+        <React.Fragment>
+          <h1>abcde</h1>
+        </React.Fragment>
+      </React.Fragment>)
   }
 }
 

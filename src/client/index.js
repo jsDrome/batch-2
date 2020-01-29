@@ -1,17 +1,13 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import Game from './myGame';
-
-class App extends Component {
-  render() {
-    return <div>
-      <Game />
-      <Game />
-      <Game />
-      <Game />
-      <Game />
-    </div>;
-  }
+function add(a, b) {
+  return a + b;
 }
 
-render(<App />, document.getElementById('abcde'));
+function subtract(a, b) {
+  if (a > b) return a - b;
+  return b -a;
+}
+
+export {
+  add,
+  subtract,
+};
