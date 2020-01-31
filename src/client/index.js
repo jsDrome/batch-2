@@ -1,13 +1,34 @@
-function add(a, b) {
-  return a + b;
+/* eslint-disable no-magic-numbers */
+import React from 'react';
+import { render } from 'react-dom';
+
+class App extends React.Component {
+  state = {
+    count: 0,
+  };
+  increment = () => {
+    const currentVal = this.state.count;
+
+    this.setState({
+      count: currentVal + 1,
+    });
+  }
+  decrement = () => {
+    const currentVal = this.state.count;
+
+    this.setState({
+      count: currentVal - 1,
+    });
+  }
+  render() {
+    return <div>
+      <p>{this.state.count}</p>
+      <button onClick={this.increment}>+</button>
+      <button onClick={this.decrement}>-</button>
+    </div>
+  }
 }
 
-function subtract(a, b) {
-  if (a > b) return a - b;
-  return b -a;
-}
+export default App;
 
-export {
-  add,
-  subtract,
-};
+render(<App />, document.getElementById('abcde'));

@@ -1,81 +1,78 @@
-# What have we learnt so far?
-
-- npm init
-- Pushing to github
-- .editorconfig & .eslintrc.js
-- Commitlint
-- React entry point
+- Github
+- Project initialization
+- Editorconfig, Eslint
+- Commit linting
 - Babel
 - Webpack
-  - Webpack dev
-  - Webpack prod
-  - HTML Webpack plugin
+  - Dev
+  - Prod
+  - Webpack Dev Server
+- Webpack plugins
+  - Html Webpack Plugin
+  - Webpack Bundle Analyzer
+  - Webpack Visualizer
+- React entry point
+- Firebase Hosting
+- Circle CI
+- HMR, Debugging
+- Unit Testing
+- Automation
+- Backend
+- Firebase Functions
+- GCP
 
-## Commitlint
+In root,
+npm i express
 
-- Install
+src/server/index.js
 
-`npm install --save-dev @commitlint/config-conventional @commitlint/cli husky`
+        const express = require('express');
+        const app = new express();
+        const port = 5000;
+        app.use(express.static('_dist'));
+        app.get('/hello', (req, res) => {
+        res.send('hello');
+        });
+        app.listen(port, () => {
+        console.log('Server started in port ' + port);
+        });
 
-- Configure husky by adding the below code to package.json
+npx firebase init (functions)
 
-    "husky": {
-      "hooks": {
-        "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-      }
-    }
+functions
 
-- Configure commitlint
+functions/index.js
 
-  Create a file called `commitlint.config.js` with the following content:
+    const functions = require('firebase-functions');
+    const express = require('express');
 
-    module.exports = { extends: [ '@commitlint/config-conventional' ] };
+    const app = express();
+
+    app.get('/hello', (req, res) => {
+      res.send('hello');
+    });
+
+    const runtimeOpts = {
+      timeoutSeconds: 300,
+      memory: '2GB',
+    };
+
+    const myFirebaseApp = functions.runWith(runtimeOpts).https.onRequest(app);
+    exports.myFirebaseApp = myFirebaseApp;
 
 
-- Install React and React-dom
+cd functions
 
-    npm i --save react react-dom
+npm i expresss
 
-  Create a file called `src/client/index.js` with the following content:
+cd ..
 
-      import React, { Component } from 'react';
-      import { render } from 'react-dom';
+npm run build:client:prod
 
-      class App extends Component {
-        render() {
-          return <h1>Hello, World</h1>;
-        }
-      }
+npx firebase deploy
 
-      render(<App />, document.getElementById('root'));
 
-  Install Babel
 
-  npm i --save-dev @babel/core @babel/preset-env @babel/plugin-proposal-class-properties @babel/plugin-syntax-dynamic-import @babel/plugin-transform-runtime @babel/preset-react babel-plugin-istanbul babel-eslint babel-loader
+Change firebase.json the following line
 
-  Configure babel
-
-  Create a file called `.babelrc` with the following content:
-
-      {
-      "presets": [
-        "@babel/preset-react",
-        [
-          "@babel/preset-env",
-          {
-            "targets": {
-              "chrome": "41",
-              "ie": "10",
-            }
-          }
-        ]
-      ],
-      "plugins": [
-        "istanbul",
-        "@babel/plugin-proposal-class-properties",
-        "@babel/plugin-syntax-dynamic-import",
-        // ["@babel/plugin-transform-runtime", {
-        //   "regenerator": true
-        // }]
-      ]
-    }
+    "function": "myFirebaseApp"
